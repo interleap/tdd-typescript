@@ -1,6 +1,6 @@
 export class InvoiceGenerator {
-    totalFare(distance: number): number {
-        return distance * 10 + 5
+    totalFare(distance: number, duration: number): number {
+        return distance * 10 + duration * 1 + 5
     }
 
 }
