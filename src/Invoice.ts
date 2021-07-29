@@ -1,11 +1,11 @@
-export class Invoice {
-    private totalFare: number
-    private numberOfRides: number;
-    private averageFarePerRide: number;
+import { Ride } from "./Ride";
 
-    constructor(totalFare: number, numberOfRides: number, averageFarePerRide: number) {
-        this.totalFare = totalFare
-        this.numberOfRides = numberOfRides;
-        this.averageFarePerRide = averageFarePerRide;
+export class Invoice {
+    private rides: Ride[]
+    constructor(rides: Ride[]) {
+        this.rides = rides
     }
+    totalFare = (): number => this.rides.reduce((sum: number, ride: Ride) => sum + ride.fare(), 0)
+    numberOfRides = () => this.rides.length
+    averageFarePerRide = (): number => this.totalFare() / this.numberOfRides()
 }
